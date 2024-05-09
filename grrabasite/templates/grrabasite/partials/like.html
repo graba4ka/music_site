@@ -1,0 +1,13 @@
+{% if not liked %}
+<form method="post" action="{% url 'save_music' %}">
+    {% csrf_token %}
+    <input type="hidden" name="like_music_id" value="{{ music.id }}">
+    <button type="submit">Сохранить</button>
+</form>
+{% else %}
+<form method="post" action="{% url 'save_music' %}">
+    {% csrf_token %}
+    <input type="hidden" name="dislike_music_id" value="{{ music.id }}">
+    <button type="submit">Убрать из избранных</button>
+</form>
+{% endif %}
